@@ -10,14 +10,12 @@ import frc.robot.Constants;
 import frc.robot.MyColor;
 
 public class LEDSubsytem extends SubsystemBase {
-
+  //Global variables
   public AddressableLED led;
   public AddressableLEDBuffer buffer;
 
-  public MyColor[] movableColors = Constants.rainbow_colors;
-
+  //Constructor
   public LEDSubsytem() {
-    //Entire LED Strip
     led = new AddressableLED(0);
     buffer = new AddressableLEDBuffer(60);
     
@@ -25,22 +23,25 @@ public class LEDSubsytem extends SubsystemBase {
     led.setData(buffer);
   }
 
-  public void moveRainbow(){
+  //Moving rainbow pattern
+  public void movePattern(MyColor[] array){
 
-    //Move positions by moving color orders around
-    MyColor[] colors = Constants.rainbow_colors;
-
-    for (int x = 0; x < buffer.getLength(); x++){
+    //Move each color in array by one index
+    for (int x = 0; x < array.length; x++){
       
-      MyColor color = colors[x%colors.length];
+      if (x > 0){ //Move backwards - give next color of array
+        array[x] = array[x-1]; 
 
+      } else { //Loop back and get last color of array
+        array[x] = array[array.length-1];
+      }
 
-
-
-      led.setData(buffer);
+      //Set color for LED
+      setColor(x, array[x]);
     }
   }
 
+  //Make a still MVRT (red/gold) pattern
   public void MVRTPattern(){
     MyColor color1 = Constants.mvrtPurple;
     MyColor color2 = Constants.mvrtGold;
@@ -55,9 +56,10 @@ public class LEDSubsytem extends SubsystemBase {
         led.setData(buffer);
     }
   }
-
-  public void setColor(int index, MyColor color){
+ 
+  private void setColor(int index, MyColor color){
     buffer.setRGB(index, color.red, color.green, color.blue);
+    led.setData(buffer);
   }
 
   @Override
