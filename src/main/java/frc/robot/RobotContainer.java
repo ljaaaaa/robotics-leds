@@ -25,6 +25,8 @@ public class RobotContainer {
 
   private void configureButtonBindings() {
       solidButton.whenPressed(new SolidCommand(subsystem, this::getSolidButton));
+
+      
   }
 
   public Command getAutonomousCommand() {
