@@ -21,6 +21,17 @@ public class LEDSubsytem extends SubsystemBase {
     
     led.setLength(buffer.getLength());
     led.setData(buffer);
+
+    led.start();
+  }
+
+  //Set entire strip to one color
+  public void setBaseColor(MyColor color){
+
+    for (int x = 0; x < buffer.getLength(); x++){
+      //Set color for LED
+      setColor(x, color);
+    }
   }
 
   //Moving rainbow pattern
@@ -53,12 +64,16 @@ public class LEDSubsytem extends SubsystemBase {
           } else if (x%2 == 1){ //set to color 2
             setColor(x, color2);
         }
-        led.setData(buffer);
     }
   }
  
+  //Sets color of one square
   private void setColor(int index, MyColor color){
     buffer.setRGB(index, color.red, color.green, color.blue);
+    setData();
+  }
+
+  public void setData(){
     led.setData(buffer);
   }
 
