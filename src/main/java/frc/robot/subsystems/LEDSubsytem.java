@@ -77,6 +77,10 @@ public class LEDSubsytem extends SubsystemBase {
     led.setData(buffer);
   }
 
+  public void stop(){
+    led.stop();
+  }
+
   @Override
   public void periodic() {
 
