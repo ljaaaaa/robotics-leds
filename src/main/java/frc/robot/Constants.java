@@ -11,6 +11,7 @@ public final class Constants {
     public static final MyColor green = new MyColor(0, 255, 0);
     public static final MyColor blue = new MyColor(0, 0, 255);
     public static final MyColor purple = new MyColor(75, 0, 130);
+    public static final MyColor black = new MyColor(0, 0, 0);
 
     public static final MyColor[] rainbow_colors = new MyColor[]{ red, orange, yellow, green, blue, purple};
 

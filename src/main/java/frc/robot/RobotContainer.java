@@ -18,14 +18,13 @@ public class RobotContainer {
 
   public RobotContainer() {
     stick = new Joystick(0);
-    solidButton = new JoystickButton(stick, 0);
+    solidButton = new JoystickButton(stick, 1);
 
     configureButtonBindings();
   }
 
   private void configureButtonBindings() {
       solidButton.whenPressed(new SolidCommand(subsystem, this::getSolidButton));
-
       
   }
 
