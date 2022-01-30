@@ -24,14 +24,6 @@ public class LEDSubsytem extends SubsystemBase {
 
     led.start();
   }
-  //Set entire strip to one color
-  public void setBaseColor(MyColor color){
-
-    for (int x = 0; x < buffer.getLength(); x++){
-      //Set color for LED
-      setColor(x, color);
-    }
-  }
 
   public void StrangePattern() {
     MyColor beautifulPurple = new MyColor(100, 6, 158);
@@ -55,7 +47,6 @@ public class LEDSubsytem extends SubsystemBase {
   }
 
   public void movingRainbow(MyColor[] array){
-    MyColor[] old_array = array;
     MyColor[] new_array = array;
 
         //Move each color in array by one index
@@ -135,6 +126,6 @@ public class LEDSubsytem extends SubsystemBase {
 
   @Override
   public void periodic() {
-
+      setColor(5, Constants.blue);
   }
 }
