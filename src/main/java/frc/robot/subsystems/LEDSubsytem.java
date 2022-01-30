@@ -14,6 +14,8 @@ public class LEDSubsytem extends SubsystemBase {
   public AddressableLED led;
   public AddressableLEDBuffer buffer;
 
+  public MyColor[] rainbow = Constants.rainbow_colors;
+
   //Constructor
   public LEDSubsytem() {
     led = new AddressableLED(0);
@@ -65,6 +67,10 @@ public class LEDSubsytem extends SubsystemBase {
         setData();
   }
 
+  public void moveBlock(MyColor color){
+
+  }
+
   //Move single block
   public void moveSingleBlock(MyColor color){
     for (int x = 0; x < buffer.getLength(); x++){
@@ -95,17 +101,14 @@ public class LEDSubsytem extends SubsystemBase {
     }
   }
 
-  //Make a still MVRT (red/gold) pattern
+  //Make a still MVRT (purple/gold) pattern
   public void MVRTPattern(){
-    MyColor color1 = Constants.blue;
-    MyColor color2 = Constants.red;
-
     for (int x = 0; x < buffer.getLength(); x++){
-        if (x%2 == 0){ //set to color 1
-            setColor(x, color1);
+        if (x%2 == 0){ //set to purple
+            setColor(x, Constants.mvrtPurple);
         
-          } else { //set to color 2
-            setColor(x, color2);
+          } else { //set to gold
+            setColor(x, Constants.mvrtGold);
         }
     }
   }
@@ -126,6 +129,6 @@ public class LEDSubsytem extends SubsystemBase {
 
   @Override
   public void periodic() {
-      setColor(5, Constants.blue);
+      moveSingleBlock(Constants.yellow);
   }
 }
