@@ -16,6 +16,10 @@ public class LEDSubsytem extends SubsystemBase {
 
   public MyColor[] rainbow = Constants.rainbow_colors;
 
+  //For moving block
+  int position = 0;
+  boolean goingUp = true;;
+
   //Constructor
   public LEDSubsytem() {
     led = new AddressableLED(0);
@@ -25,27 +29,6 @@ public class LEDSubsytem extends SubsystemBase {
     led.setData(buffer);
 
     led.start();
-  }
-
-  public void StrangePattern() {
-    MyColor beautifulPurple = new MyColor(100, 6, 158);
-    MyColor coolGold = new MyColor(255, 213, 0);
-    int l = 0;
-    while(l <= 100){
-      for(int j =0; j<100; j++){
-        for(int lol = 0; lol<buffer.getLength(); lol++){
-          if(lol%3 == 0){
-            setColor(lol+j, beautifulPurple);
-          } else if(lol%3 == 1){
-            setColor(lol+j, coolGold);
-          } else if(lol%3 == 2){
-            setColor(lol+j, beautifulPurple);
-          }
-        }
-
-        l++;
-      }
-    }
   }
 
   public void movingRainbow(MyColor[] array){
@@ -68,7 +51,22 @@ public class LEDSubsytem extends SubsystemBase {
   }
 
   public void moveBlock(MyColor color){
+    System.out.println("hello");
+    if (position == buffer.getLength()-1){
+        goingUp = false;
 
+    } else if (position == 0){
+        goingUp = true;
+    }
+
+    if (goingUp){
+        position++;
+        setColor(position, color);
+
+    } else {
+        position--;
+        setColor(position, Constants.black);
+    }
   }
 
   //Move single block
@@ -129,6 +127,12 @@ public class LEDSubsytem extends SubsystemBase {
 
   @Override
   public void periodic() {
-      moveSingleBlock(Constants.yellow);
+      moveBlock(Constants.purple);
+
+      try {
+      Thread.sleep(100);
+      } catch (InterruptedException e){
+
+      }
   }
 }
