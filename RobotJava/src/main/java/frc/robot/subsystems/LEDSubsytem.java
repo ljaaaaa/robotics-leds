@@ -51,7 +51,6 @@ public class LEDSubsytem extends SubsystemBase {
   }
 
   public void moveBlock(MyColor color){
-    System.out.println("hello");
     if (position == buffer.getLength()-1){
         goingUp = false;
 
@@ -127,12 +126,6 @@ public class LEDSubsytem extends SubsystemBase {
 
   @Override
   public void periodic() {
-      moveBlock(Constants.purple);
-
-      try {
-      Thread.sleep(100);
-      } catch (InterruptedException e){
-
-      }
+      
   }
 }
