@@ -13,8 +13,6 @@ CRGB colors[6] {CRGB::Red, CRGB::Orange, CRGB::Yellow, CRGB::Green, CRGB::Blue, 
 CRGB leds[NUM_LEDS];
 
 void setup() { 
-  Serial.begin(9600);
-  
   FastLED.addLeds<NEOPIXEL, DATA_PIN>(leds, NUM_LEDS);
   FastLED.setBrightness(BRIGHTNESS);
 }
@@ -22,12 +20,6 @@ void setup() {
 void loop(){
   moving_comet();
   delay(100);
-}
-
-//Gradient
-void gradient(){
-  
-  
 }
 
 //Moves comet across LED strip
@@ -121,13 +113,3 @@ void MVRTPattern(){
     delay(30);
   }
 }
-
-struct color {
-  int r, g, b;
-
-  void set_colors(int _r, int _g, int _b)
-    r = _r;
-    g = _g;
-    b = _b;
-  }
-};
