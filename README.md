@@ -1,4 +1,4 @@
-# RoboticsLED
+# RoboticsLEDs
 Some RoboticsLED patterns made by MVRT Rookies 2021 - 2022
 
 ***The code is separated into two direcories:***
