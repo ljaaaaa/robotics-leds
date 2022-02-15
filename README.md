@@ -1,4 +1,4 @@
-# RoboticsLEDs
+# Robotics LEDs
 Some LED patterns for Arduino and RoboRio
 
 ***The code is separated into two direcories:***
