@@ -1,5 +1,5 @@
-# RoboticsLED
-Some RoboticsLED patterns made by MVRT Rookies 2021 - 2022
+# Robotics LEDs
+Some LED patterns for Arduino and RoboRio
 
 ***The code is separated into two direcories:***
 
