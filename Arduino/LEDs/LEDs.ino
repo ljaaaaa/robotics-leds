@@ -1,7 +1,7 @@
 #include "FastLED.h"
 
-#define NUM_LEDS 60
-#define DATA_PIN 6
+#define NUM_LEDS 30
+#define DATA_PIN 8
 #define BRIGHTNESS 70
 
 //For moving_comet()
@@ -18,7 +18,8 @@ void setup() {
 }
 
 void loop(){
-  moving_comet();
+  moving_rainbow();
+  FastLED.show();
   delay(100);
 }
 
