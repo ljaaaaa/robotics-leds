@@ -4,7 +4,7 @@
 #include "FastLED.h"
 #include "FastLED_RGBW.h"
 
-#define NUM_LEDS 60
+#define NUM_LEDS 300
 #define DATA_PIN 8
 
 CRGBW leds[NUM_LEDS];
@@ -25,7 +25,7 @@ void fill_color(CRGB color){
   for(int x = 0; x < NUM_LEDS; x++){
     leds[x] = color;
     FastLED.show();
-    delay(50);
+    delay(0);
   }
   delay(500);
 }

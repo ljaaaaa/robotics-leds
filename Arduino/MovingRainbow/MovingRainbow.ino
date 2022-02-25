@@ -4,7 +4,7 @@
 #include "FastLED.h"
 #include "FastLED_RGBW.h"
 
-#define NUM_LEDS 60
+#define NUM_LEDS 200
 #define DATA_PIN 8
 
 CRGBW leds[NUM_LEDS];
@@ -40,6 +40,7 @@ void moving_rainbow(){
   move_colors();
   for (int x = 0; x < NUM_LEDS; x++){
     leds[x] = colors[x%6];
+    delay(1);
   }
 
   FastLED.show(); 

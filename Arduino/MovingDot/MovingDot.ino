@@ -4,7 +4,7 @@
 #include "FastLED.h"
 #include "FastLED_RGBW.h"
 
-#define NUM_LEDS 60
+#define NUM_LEDS 300
 #define DATA_PIN 8
 
 CRGBW leds[NUM_LEDS];
@@ -33,6 +33,6 @@ void moving_dot(){
       leds[x-1] = CRGB::Black;
     }
     FastLED.show(); 
-    delay(50);
+    delay(10);
   }
 }
