@@ -4,7 +4,7 @@
 #include "FastLED.h"
 #include "FastLED_RGBW.h"
 
-#define NUM_LEDS 30
+#define NUM_LEDS 60
 #define DATA_PIN 8
 
 CRGBW leds[NUM_LEDS];
@@ -27,54 +27,42 @@ void loop(){
   //Red to yellow
   for (int x = 0; x < 255; x++){
     g++;
-    paintLED(0, r, g, b);
-    FastLED.show();  
+    paintLEDs(r, g, b);
   }
 
   //Yellow to green
   for (int x = 0; x < 255; x++){
     r--;
-    paintLED(0, r, g, b);
-    FastLED.show();  
+    paintLEDs(r, g, b);
   }
 
   //Green to light blue
   for (int x = 0; x < 255; x++){
     b++;
-    paintLED(0, r, g, b);
-    FastLED.show();  
+    paintLEDs(r, g, b);
   }
 
   //Light green to blue
   for (int x = 0; x < 255; x++){
     g--;
-    paintLED(0, r, g, b);
-    FastLED.show();  
+    paintLEDs(r, g, b);
   }
 
   //Blue to pink
   for (int x = 0; x < 255; x++){
     r++;
-    paintLED(0, r, g, b);
-    FastLED.show();  
+    paintLEDs(r, g, b);
   }
 
   //Pink to purple
   for (int x = 0; x < 255; x++){
     b--;
-    paintLED(0, r, g, b);
-    FastLED.show();  
+    paintLEDs(r, g, b);
   }
 }
 
-void paintLED(int pos, int r, int g, int b){
-  leds[pos].r = r;
-  leds[pos].g = g;
-  leds[pos].b = b;
-}
-
 void paintLEDs(int r, int g, int b){
-  for (int x = 0; x < NUM_LEDS; x++){
+  for (int x = 0; x < NUM_LEDS-1; x++){
     leds[x].r = r;
     leds[x].g = g;
     leds[x].b = b;
