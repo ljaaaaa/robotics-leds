@@ -8,11 +8,14 @@ import edu.wpi.first.wpilibj.AddressableLEDBuffer;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import frc.robot.MyColor;
+import frc.robot.MyLEDBuffer;
 
 public class LEDSubsytem extends SubsystemBase {
   //Global variables
   public AddressableLED led;
-  public AddressableLEDBuffer buffer;
+  public AddressableLEDBuffer buffer2;
+  public MyLEDBuffer buffer;
+//  public AddressableLEDBuffer buffer;
 
   public MyColor[] rainbow = Constants.rainbow_colors;
 
@@ -23,19 +26,22 @@ public class LEDSubsytem extends SubsystemBase {
   //Constructor
   public LEDSubsytem() {
     led = new AddressableLED(0);
-    buffer = new AddressableLEDBuffer(30);
+    buffer = new MyLEDBuffer(30);
+  //  buffer = new AddressableLEDBuffer(30);
     
     led.setLength(buffer.getLength());
     led.setData(buffer);
 
     led.start();
+
+    setColor(0, Constants.blue);
+    setData();
   }
 
   public void paintRed(){
     for (int x = 0; x < buffer.getLength(); x++){
       setColor(x, Constants.blue);
       setData();
-      System.out.println(x);
     }
   }
 
@@ -135,13 +141,5 @@ public class LEDSubsytem extends SubsystemBase {
 
   @Override
   public void periodic() {
-    moveBlock(Constants.red);
-
-    try {
-      Thread.sleep(100);
-    } catch (InterruptedException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
   }
 }
