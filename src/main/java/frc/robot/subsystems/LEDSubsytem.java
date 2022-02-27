@@ -23,12 +23,20 @@ public class LEDSubsytem extends SubsystemBase {
   //Constructor
   public LEDSubsytem() {
     led = new AddressableLED(0);
-    buffer = new AddressableLEDBuffer(120);
+    buffer = new AddressableLEDBuffer(30);
     
     led.setLength(buffer.getLength());
     led.setData(buffer);
 
     led.start();
+  }
+
+  public void paintRed(){
+    for (int x = 0; x < buffer.getLength(); x++){
+      setColor(x, Constants.blue);
+      setData();
+      System.out.println(x);
+    }
   }
 
   public void movingRainbow(MyColor[] array){
@@ -127,12 +135,13 @@ public class LEDSubsytem extends SubsystemBase {
 
   @Override
   public void periodic() {
-      moveBlock(Constants.purple);
+    moveBlock(Constants.red);
 
-      try {
+    try {
       Thread.sleep(100);
-      } catch (InterruptedException e){
-
-      }
+    } catch (InterruptedException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
   }
 }
