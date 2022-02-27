@@ -140,9 +140,6 @@ public class LEDSubsytem extends SubsystemBase {
 
   @Override
   public void periodic() {
-<<<<<<< HEAD:src/main/java/frc/robot/subsystems/LEDSubsytem.java
-=======
-      
->>>>>>> c3350d1544f902c82736e708087996b6ed15f694:RobotJava/src/main/java/frc/robot/subsystems/LEDSubsytem.java
+    
   }
 }
