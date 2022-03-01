@@ -11,15 +11,16 @@ import edu.wpi.first.hal.HAL;
 import edu.wpi.first.hal.PWMJNI;
 
 public class MyLED extends AddressableLED {
-  private final int m_pwmHandle;
-  private final int m_handle;
+ // private final int m_pwmHandle;
+ // private final int m_handle;
 
   public MyLED(int port) {
     super(port);
-    m_pwmHandle = PWMJNI.initializePWMPort(HAL.getPort((byte) port));
-    m_handle = AddressableLEDJNI.initialize(m_pwmHandle);
-    HAL.report(tResourceType.kResourceType_AddressableLEDs, port + 1);
+ //   m_pwmHandle = PWMJNI.initializePWMPort(HAL.getPort((byte) port));
+ //   m_handle = AddressableLEDJNI.initialize(m_pwmHandle);
+ //   HAL.report(tResourceType.kResourceType_AddressableLEDs, port + 1);
   }
+/*
 
   @Override
   public void close() {
@@ -35,6 +36,7 @@ public class MyLED extends AddressableLED {
     AddressableLEDJNI.setLength(m_handle, length);
   }
 
+  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   public void setData(MyLEDBuffer buffer) {
     AddressableLEDJNI.setData(m_handle, buffer.buffer);
   }
@@ -63,4 +65,5 @@ public class MyLED extends AddressableLED {
   public void stop() {
     AddressableLEDJNI.stop(m_handle);
   }
+  */
 }

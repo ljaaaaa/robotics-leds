@@ -9,21 +9,23 @@ import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.wpilibj.util.Color8Bit;
 
 public class MyLEDBuffer extends AddressableLEDBuffer {
-  public byte[] buffer;
+  public byte[] m_buffer;
 
   public MyLEDBuffer(int length) {
       super(length);
-      buffer = new byte[length * 5];
+      m_buffer = new byte[length * 5];
   }
 
   @Override
   @SuppressWarnings("ParameterName")
   public void setRGB(int index, int r, int g, int b) {
-    buffer[index * 5] = (byte) b;
-    buffer[(index * 5) + 1] = (byte) g;
-    buffer[(index * 5) + 2] = (byte) r;
-    buffer[(index * 5) + 3] = 0; //white
-    buffer[(index * 5) + 3] = 0;
+    System.out.println("setting rgb");
+    System.out.println(m_buffer);
+    m_buffer[index * 5] = (byte) b;
+    m_buffer[(index * 5) + 1] = (byte) g;
+    m_buffer[(index * 5) + 2] = (byte) r;
+    m_buffer[(index * 5) + 3] = 0; //white
+    m_buffer[(index * 5) + 3] = 0;
   }
 
   @Override
@@ -38,20 +40,20 @@ public class MyLEDBuffer extends AddressableLEDBuffer {
 
   @Override
   public int getLength() {
-    return buffer.length / 5;
+    return m_buffer.length / 5;
   }
 
   @Override
   public Color8Bit getLED8Bit(int index) {
     return new Color8Bit(
-        buffer[index * 5 + 2] & 0xFF, buffer[index * 5 + 1] & 0xFF, buffer[index * 5] & 0xFF);
+        m_buffer[index * 5 + 2] & 0xFF, m_buffer[index * 5 + 1] & 0xFF, m_buffer[index * 5] & 0xFF);
   }
 
   @Override
   public Color getLED(int index) {
     return new Color(
-        (buffer[index * 5 + 2] & 0xFF) / 255.0,
-        (buffer[index * 5 + 1] & 0xFF) / 255.0,
-        (buffer[index * 5] & 0xFF) / 255.0);
+        (m_buffer[index * 5 + 2] & 0xFF) / 255.0,
+        (m_buffer[index * 5 + 1] & 0xFF) / 255.0,
+        (m_buffer[index * 5] & 0xFF) / 255.0);
   }
 }
