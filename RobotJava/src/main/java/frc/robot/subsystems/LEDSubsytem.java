@@ -15,9 +15,8 @@ import frc.robot.MyLEDBuffer;
 public class LEDSubsytem extends SubsystemBase {
   //Global variables
   public AddressableLED led;
-  public AddressableLEDBuffer buffer2;
-  public MyLEDBuffer buffer;
-//  public AddressableLEDBuffer buffer;
+  //public MyLEDBuffer buffer;
+  public AddressableLEDBuffer buffer;
 
   public MyColor[] rainbow = Constants.rainbow_colors;
 
