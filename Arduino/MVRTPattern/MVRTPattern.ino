@@ -9,7 +9,6 @@
 
 CRGBW leds[NUM_LEDS];
 CRGB *ledsRGB = (CRGB *) &leds[0];
-
 const uint8_t brightness = 128;
 
 void setup() {

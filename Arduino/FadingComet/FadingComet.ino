@@ -4,7 +4,7 @@
 #include "FastLED.h"
 #include "FastLED_RGBW.h"
 
-#define NUM_LEDS 60
+#define NUM_LEDS 300
 #define DATA_PIN 8
 
 CRGBW leds[NUM_LEDS];
