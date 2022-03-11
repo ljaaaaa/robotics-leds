@@ -1,6 +1,7 @@
-int pos;
+void still_fading_rainbow() {
+  FastLED.addLeds<WS2812B, DATA_PIN, RGB>(ledsRGB, getRGBWsize(NUM_LEDS));
+  FastLED.setBrightness(brightness);
 
-void fading_comet(){
   int num_colors = 6; //red, orange, yellow, green, blue, purple
   int num_segments = NUM_LEDS/num_colors; //segments of each color
   
@@ -44,14 +45,5 @@ void fading_comet(){
     paintLED(r, g, b);
   }
 
-  FastLED.show();
-}
-
-void paintLED(int r, int g, int b){
-  leds[pos].r = r;
-  leds[pos].g = g;
-  leds[pos].b = b;
-  leds[pos].w = 0;
-  pos++;
   FastLED.show();
 }
