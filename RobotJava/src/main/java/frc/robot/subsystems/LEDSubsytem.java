@@ -5,18 +5,13 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.AddressableLED;
 import edu.wpi.first.wpilibj.AddressableLEDBuffer;
-import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants;
 import frc.robot.LEDPatterns;
 import frc.robot.MyColor;
 
 public class LEDSubsytem extends SubsystemBase {
-  //Global variables
   AddressableLEDBuffer buffer;
   AddressableLED led;
-
-  public MyColor[] rainbow = Constants.rainbow_colors;
 
   public LEDPatterns patterns;
 
@@ -24,32 +19,11 @@ public class LEDSubsytem extends SubsystemBase {
   public LEDSubsytem() {
     led = new AddressableLED(0);
     buffer = new AddressableLEDBuffer(10);
-    
+    patterns = new LEDPatterns(buffer, led);
+
     led.setLength(buffer.getLength());
     led.setData(buffer);
     led.start();
-
-    //setColor(0, new MyColor(0, 0, 0));
-    //setColor(1, new MyColor(0, 0, 0));
-
-   // setColor(0, Constants.red);
-    buffer.setLED(0, new Color(0, 0, 255));
-    led.setData(buffer);
-    System.out.println("!!!!!!!!!!!!!!!!!!!!!! - " + buffer.getLED(0));
-    System.out.println("!!!!!!!!!!!!!!!!!!!!!! - " + buffer.getLED(0).red);
-    System.out.println("!!!!!!!!!!!!!!!!!!!!!! - " + buffer.getLED(0).green);
-    System.out.println("!!!!!!!!!!!!!!!!!!!!!! - " + buffer.getLED(0).blue);
-
-    System.out.println("----");
-    System.out.println("!!!!!!!!!!!!!!!!!!!!!! - " + buffer.getLED(1));
-    System.out.println("!!!!!!!!!!!!!!!!!!!!!! - " + buffer.getLED(1).red);
-    System.out.println("!!!!!!!!!!!!!!!!!!!!!! - " + buffer.getLED(1).green);
-    System.out.println("!!!!!!!!!!!!!!!!!!!!!! - " + buffer.getLED(1).blue);
-    System.out.println("hello");
-
-
-    //setColor(1, new MyColor(0, 0, 0));
-    led.setData(buffer);
   }
 
   //Sets color of one square
@@ -58,6 +32,7 @@ public class LEDSubsytem extends SubsystemBase {
     setData();
   }
 
+  //Update led data from buffer
   public void setData(){
     led.setData(buffer);
   }

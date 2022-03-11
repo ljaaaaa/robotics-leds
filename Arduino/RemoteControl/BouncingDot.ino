@@ -1,5 +1,5 @@
 void bouncing_dot() {
-  for (int turns = 0; turns < 10; turns++) {
+ // for (int turns = 0; turns < 10; turns++) {
     for (int dir = 1, cnt = 0; cnt < 2; dir *= -1, cnt++){
       for (int i = (cnt ? NUM_LEDS - 1 : 0); 0 <= i && i < NUM_LEDS; i += dir) {
         int p = i - dir;
@@ -7,8 +7,7 @@ void bouncing_dot() {
         if (0 <= p && p < NUM_LEDS)
           leds[p] = CRGBW{0, 0, 0, 0};
         FastLED.show();
-        delay(10);
       }
     }
-  }
+ // }
 }

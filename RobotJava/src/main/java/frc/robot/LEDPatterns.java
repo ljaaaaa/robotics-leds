@@ -4,7 +4,6 @@ import edu.wpi.first.wpilibj.AddressableLED;
 import edu.wpi.first.wpilibj.AddressableLEDBuffer;
 
 public class LEDPatterns {
-    
     AddressableLEDBuffer buffer;
     AddressableLED led;
 
@@ -23,6 +22,7 @@ public class LEDPatterns {
     }
   }
 
+  //Move a rainbow
   public void movingRainbow(MyColor[] array){
     MyColor[] new_array = array;
 
@@ -42,6 +42,7 @@ public class LEDPatterns {
         setData();
   }
 
+  //Move a block across strip
   public void moveBlock(MyColor color){
     if (position == buffer.getLength()-1){
         goingUp = false;

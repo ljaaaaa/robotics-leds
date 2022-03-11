@@ -4,7 +4,6 @@
 
 package frc.robot;
 
-/** Add your docs here. */
 public class MyColor {
     public int red;
     public int green;
