@@ -12,26 +12,23 @@ CRGBW leds[NUM_LEDS];
 CRGB *ledsRGB = (CRGB *) &leds[0];
 
 const uint8_t brightness = 128;
+int pos = 0;
 
 IRrecv irrecv(RECEIVER_PIN);
 decode_results results;
 
 void setup(){
   Serial.begin(9600);
-  Serial.println("Receiving..."); 
+  
+  irrecv.enableIRIn(); //Init receiver
 
-  //Init receiver
-  irrecv.enableIRIn();
-
-  //Init Leds
-  FastLED.addLeds<WS2812B, DATA_PIN, RGB>(ledsRGB, getRGBWsize(NUM_LEDS));
+  FastLED.addLeds<WS2812B, DATA_PIN, RGB>(ledsRGB, getRGBWsize(NUM_LEDS)); //Init LEDs
   FastLED.setBrightness(brightness);
 }
 
 
 void loop(){
-  //Signal received
-  if (irrecv.decode(&results)){
+  if (irrecv.decode(&results)){ //Signal recieved
     translateIR(); 
     irrecv.resume(); // receive the next value
   }  
@@ -45,10 +42,11 @@ void translateIR() {
       break;
     case 0xFF30CF: 
       Serial.println("1");
-      bouncing_dot();    
+      //bouncing_dot();    
       break;
     case 0xFF18E7: 
-      Serial.println("2");    
+      Serial.println("2"); 
+      fading_comet();   
       break;
     case 0xFF7A85: Serial.println("3");    break;
     case 0xFF10EF: Serial.println("4");    break;
@@ -63,9 +61,31 @@ void translateIR() {
   delay(500); // Do not get immediate repeat
 }
 
+
+
 void clear_leds() {
-  for (int i = 0; i < NUM_LEDS; i++) leds[i] = CRGBW{0, 0, 0, 0};
+  for (int i = 0; i < NUM_LEDS; i++){
+    leds[i] = CRGBW{0, 0, 0, 0};
+  }
 }
+
+void paintLED(int r, int g, int b){
+  leds[pos].r = r;
+  leds[pos].g = g;
+  leds[pos].b = b;
+  pos++;
+  FastLED.show();
+}
+
+void paintLEDs(int r, int g, int b){
+  for (int x = 0; x < NUM_LEDS-1; x++){
+    leds[x].r = r;
+    leds[x].g = g;
+    leds[x].b = b;
+  }
+  FastLED.show();
+}
+
 void bouncing_dot() {
   clear_leds();
   for (int turns = 0; turns < 10; turns++) {
@@ -82,27 +102,6 @@ void bouncing_dot() {
   }
 }
 
-/*
-void clear_leds() {
-  for (int i = 0; i < NUM_LEDS; i++) leds[i] = CRGB::Black;
-}
-void bouncing_dot() {
-  clear_leds();
-  for (int turns = 0; turns < 10; turns++) {
-    for (int dir = 1, cnt = 0; cnt < 2; dir *= -1, cnt++){
-      for (int i = (cnt ? NUM_LEDS - 1 : 0); 0 <= i && i < NUM_LEDS; i += dir) {
-        int p = i - dir;
-        leds[i] = CRGB::White;
-        if (0 <= p && p < NUM_LEDS)
-          leds[p] = CRGB::Black;
-        FastLED.show();
-        delay(10);
-      }
-    }
-  }
-}
-*/
-
 void moving_dot(){
   for (int x = 0; x < NUM_LEDS; x++){
     leds[x] = CRGB::White;
@@ -114,5 +113,93 @@ void moving_dot(){
     }
     FastLED.show(); 
     delay(10);
+  }
+}
+
+void fading_comet(){
+  int num_colors = 6; //red, orange, yellow, green, blue, purple
+  int num_segments = NUM_LEDS/num_colors; //segments of each color
+  
+  int r = 255;
+  int g = 0;
+  int b = 255;
+
+  //Pink to purple
+  for (int x = 0; x < num_segments; x++){
+    b -= 255/num_segments;
+    paintLED(r, g, b);
+  }
+  
+  //Red to yellow
+  for (int x = 0; x < num_segments; x++){
+    g += 255/num_segments;
+    paintLED(r, g, b);
+  }
+
+  //Yellow to green
+  for (int x = 0; x < num_segments; x++){
+    r -= 255/num_segments;
+    paintLED(r, g, b);
+  }
+
+  //Green to light blue
+  for (int x = 0; x < num_segments; x++){
+    b += 255/num_segments;
+    paintLED(r, g, b);
+  }
+
+  //Light green to blue
+  for (int x = 0; x < num_segments; x++){
+    g -= 255/num_segments;
+    paintLED(r, g, b);
+  }
+
+  //Blue to pink
+  for (int x = 0; x < num_segments; x++){
+    r += 255/num_segments;
+    paintLED(r, g, b);
+  }
+  FastLED.show();
+}
+
+void fading_rainbow(){
+int r = 255;
+  int g = 0;
+  int b = 0;
+  
+  //Red to yellow
+  for (int x = 0; x < 255; x++){
+    g++;
+    paintLEDs(r, g, b);
+  }
+
+  //Yellow to green
+  for (int x = 0; x < 255; x++){
+    r--;
+    paintLEDs(r, g, b);
+  }
+
+  //Green to light blue
+  for (int x = 0; x < 255; x++){
+    b++;
+    paintLEDs(r, g, b);
+  }
+
+  //Light green to blue
+  for (int x = 0; x < 255; x++){
+    g--;
+    paintLEDs(r, g, b);
+  }
+
+  //Blue to pink
+  for (int x = 0; x < 255; x++){
+    r++;
+    paintLEDs(r, g, b);
+  }
+
+  //Pink to purple
+  for (int x = 0; x < 255; x++){
+    b--;
+    paintLEDs(r, g, b);
   }
 }
