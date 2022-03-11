@@ -28,6 +28,9 @@ void setup(){
 
 
 void loop(){
+  //leds[0] = CRGB::White;
+  //FastLED.show();
+  
   if (irrecv.decode(&results)){ //Signal recieved
     translateIR(); 
     irrecv.resume(); // receive the next value
@@ -36,32 +39,43 @@ void loop(){
 
 void translateIR() {
   switch(results.value) {
-    case 0xFF6897: 
-      Serial.println("0");   
-      moving_dot();
+
+    case 0xFF6897: //0
+      moving_dot();   
+      Serial.print("0");   
       break;
-    case 0xFF30CF: 
-      Serial.println("1");
-      //bouncing_dot();    
+    case 0xFF30CF: //1
+      //bouncing_dot();
+      Serial.print("1");    
       break;
-    case 0xFF18E7: 
-      Serial.println("2"); 
+    case 0xFF18E7: //2
       fading_comet();   
+      Serial.print("2");   
       break;
-    case 0xFF7A85: Serial.println("3");    break;
-    case 0xFF10EF: Serial.println("4");    break;
-    case 0xFF38C7: Serial.println("5");    break;
-    case 0xFF5AA5: Serial.println("6");    break;
-    case 0xFF42BD: Serial.println("7");    break;
-    case 0xFF4AB5: Serial.println("8");    break;
-    case 0xFF52AD: Serial.println("9");    break;
-    case 0xFFFFFFFF: Serial.println(" REPEAT");break;  
-    default: Serial.println(" other button   ");
+    case 0xFF7A85: //3
+      fading_rainbow();
+      Serial.print("3");     
+      break;
+    case 0xFF10EF: //4    
+      MVRT_pattern();
+      Serial.print("4");   
+      break;
+    case 0xFF38C7: //5
+      fill_color(CRGB::Blue);
+       Serial.print("5");
+      break;
+    case 0xFF5AA5: //6  
+      break;
+    case 0xFF42BD: //7    
+      break;
+    case 0xFF4AB5: //8    
+      break;
+    case 0xFF52AD: //9    
+      break;
   }
+  FastLED.show();
   delay(500); // Do not get immediate repeat
 }
-
-
 
 void clear_leds() {
   for (int i = 0; i < NUM_LEDS; i++){
@@ -163,7 +177,7 @@ void fading_comet(){
 }
 
 void fading_rainbow(){
-int r = 255;
+  int r = 255;
   int g = 0;
   int b = 0;
   
@@ -202,4 +216,24 @@ int r = 255;
     b--;
     paintLEDs(r, g, b);
   }
+  FastLED.show();
+}
+
+void MVRT_pattern(){
+   for (int x = 0; x < NUM_LEDS; x++){
+    if (x%2 == 0){
+      leds[x] = CRGB(0xFFC410);
+    } else {
+      leds[x] = CRGB(0x260235);
+    }
+  }
+  FastLED.show();
+}
+
+void fill_color(CRGB color){
+  for(int x = 0; x < NUM_LEDS; x++){
+    leds[x] = color;
+    FastLED.show();
+  }
+  delay(500);
 }
