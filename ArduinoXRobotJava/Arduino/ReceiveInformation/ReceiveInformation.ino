@@ -7,7 +7,11 @@ void loop() {
     byte value = Serial.read();
 
     if (value == 0x12){
-      Serial.print("Received information from roborio!"); 
+      Serial.print("Received information from roborio! (info 1)"); 
+    }
+
+    if (value == 0x12){
+      Serial.print("Received information from roborio! (info 2)"); 
     }
   }
 }
