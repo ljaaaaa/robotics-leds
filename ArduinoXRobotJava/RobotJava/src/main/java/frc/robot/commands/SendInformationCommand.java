@@ -5,12 +5,19 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.InfoManagerSubsystem;
 
 public class SendInformationCommand extends CommandBase {
   
-  public SendInformationCommand() {
-    
+  InfoManagerSubsystem infoManager;
+  boolean sentMessage;
 
+  public SendInformationCommand(InfoManagerSubsystem infoManager, byte[] info) {
+    this.infoManager = infoManager;
+
+    //Send message
+    infoManager.sendMessage(info);
+    sentMessage = true;
   }
 
   @Override
@@ -25,11 +32,11 @@ public class SendInformationCommand extends CommandBase {
 
   @Override
   public void end(boolean interrupted) {
-
+    
   }
 
   @Override
   public boolean isFinished() {
-    return false;
+    return sentMessage;
   }
 }
