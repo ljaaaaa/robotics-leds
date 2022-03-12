@@ -35,7 +35,11 @@ public class InfoManagerSubsystem extends SubsystemBase {
   }
 
   public void sendMessage(byte[] info){
-    arduino.write(info, 1);
+    try {
+      arduino.write(info, 1);
+    } catch (Exception e){
+      System.out.println("--------Exception----------!");
+    }
   }
 
   @Override

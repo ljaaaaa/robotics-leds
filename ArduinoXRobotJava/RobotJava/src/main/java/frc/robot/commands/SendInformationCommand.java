@@ -11,18 +11,19 @@ public class SendInformationCommand extends CommandBase {
   
   InfoManagerSubsystem infoManager;
   boolean sentMessage;
+  byte[] info;
 
   public SendInformationCommand(InfoManagerSubsystem infoManager, byte[] info) {
     this.infoManager = infoManager;
+    this.info = info;
 
-    //Send message
-    infoManager.sendMessage(info);
-    sentMessage = true;
   }
 
   @Override
   public void initialize() {
-
+    //Send message
+    infoManager.sendMessage(info);
+    sentMessage = true;
   }
 
   @Override

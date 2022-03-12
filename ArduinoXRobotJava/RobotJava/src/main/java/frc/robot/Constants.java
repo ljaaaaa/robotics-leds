@@ -5,7 +5,4 @@
 package frc.robot;
 
 public final class Constants {
-
-    public static byte[] info1 = {0x12};
-    public static byte[] info2 = {0x16};
 }

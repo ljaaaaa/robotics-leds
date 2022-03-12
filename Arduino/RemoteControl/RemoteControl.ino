@@ -25,6 +25,9 @@ void setup(){
 }
 
 void loop(){
+  leds[0] = CRGB::Red;
+  FastLED.show();
+  
   if (irrecv.decode(&results)){ //Signal recieved
     translateIR(); 
     irrecv.resume(); // Receive the next signal

@@ -16,6 +16,8 @@ public class RobotContainer {
   private Joystick joystick;
   private JoystickButton buttonA;
   private JoystickButton buttonB;
+  private JoystickButton buttonX;
+  private JoystickButton buttonY;
 
   public RobotContainer() {
     try {
@@ -27,13 +29,17 @@ public class RobotContainer {
     joystick = new Joystick(0);
     buttonA = new JoystickButton(joystick, 1);
     buttonB = new JoystickButton(joystick, 2);
+    buttonX = new JoystickButton(joystick, 3);
+    buttonY = new JoystickButton(joystick, 4);
 
     configureButtonBindings();
   }
 
   private void configureButtonBindings() {
-    buttonA.whenPressed(new SendInformationCommand(infoManager, Constants.info1));
-    buttonB.whenPressed(new SendInformationCommand(infoManager, Constants.info2));
+    buttonA.whenPressed(new SendInformationCommand(infoManager, new byte[] {0x0}));
+    buttonB.whenPressed(new SendInformationCommand(infoManager, new byte[] {0x1}));
+    buttonX.whenPressed(new SendInformationCommand(infoManager, new byte[] {0x2}));
+    buttonY.whenPressed(new SendInformationCommand(infoManager, new byte[] {0x3}));
   }
 
   public Command getAutonomousCommand() {
