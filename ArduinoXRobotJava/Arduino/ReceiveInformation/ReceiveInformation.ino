@@ -31,7 +31,8 @@ void loop() {
         fading_comet();
         break;
        case 0x2:
-        fading_rainbow();
+        moving_rainbow();
+        //fading_rainbow();
         break;
        case 0x3:
         fill_all(CRGB::Green);

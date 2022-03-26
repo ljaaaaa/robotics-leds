@@ -1,50 +1,58 @@
-void fading_rainbow(){
+int pos = 0;
+
+void fading_rainbow() {
+  int num_colors = 6; //red, orange, yellow, green, blue, purple
+  int num_segments = NUM_LEDS/num_colors; //segments of each color
+  
   int r = 255;
   int g = 0;
-  int b = 0;
+  int b = 255;
+
+  //Pink to purple
+  for (int x = 0; x < num_segments; x++){
+    b -= 255/num_segments;
+    paintLED(r, g, b);
+  }
   
   //Red to yellow
-  for (int x = 0; x < 255; x++){
-    g++;
-    paintLEDs(r, g, b);
+  for (int x = 0; x < num_segments; x++){
+    g += 255/num_segments;
+    paintLED(r, g, b);
   }
 
   //Yellow to green
-  for (int x = 0; x < 255; x++){
-    r--;
-    paintLEDs(r, g, b);
+  for (int x = 0; x < num_segments; x++){
+    r -= 255/num_segments;
+    paintLED(r, g, b);
   }
 
   //Green to light blue
-  for (int x = 0; x < 255; x++){
-    b++;
-    paintLEDs(r, g, b);
+  for (int x = 0; x < num_segments; x++){
+    b += 255/num_segments;
+    paintLED(r, g, b);
   }
 
   //Light green to blue
-  for (int x = 0; x < 255; x++){
-    g--;
-    paintLEDs(r, g, b);
+  for (int x = 0; x < num_segments; x++){
+    g -= 255/num_segments;
+    paintLED(r, g, b);
   }
 
   //Blue to pink
-  for (int x = 0; x < 255; x++){
-    r++;
-    paintLEDs(r, g, b);
+  for (int x = 0; x < num_segments; x++){
+    r += 255/num_segments;
+    paintLED(r, g, b);
   }
+  pos = 0;
 
-  //Pink to purple
-  for (int x = 0; x < 255; x++){
-    b--;
-    paintLEDs(r, g, b);
-  }
+  FastLED.show();
 }
 
-void paintLEDs(int r, int g, int b){
-  for (int x = 0; x < NUM_LEDS-1; x++){
-    leds[x].r = r;
-    leds[x].g = g;
-    leds[x].b = b;
-  }
+void paintLED(int r, int g, int b){
+  leds[pos].r = r;
+  leds[pos].g = g;
+  leds[pos].b = b;
+  leds[pos].w = 0;
+  pos++;
   FastLED.show();
 }

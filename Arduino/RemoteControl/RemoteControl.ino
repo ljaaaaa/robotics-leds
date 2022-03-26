@@ -24,50 +24,58 @@ void setup(){
   FastLED.setBrightness(brightness);
 }
 
+void all(){
+   morse_code();
+  delay(1000);
+  bouncing_dot();
+  delay(1000);
+  fading_rainbow();
+  delay(1000);
+  fill_all(CRGB::Green);
+  delay(1000);
+  mvrt_pattern();
+  delay(1000);
+  moving_rainbow();
+  delay(1000);
+}
+
 void loop(){
-  leds[0] = CRGB::Red;
+  //if (irrecv.decode(&results)){ //Signal recieved
+  //  translateIR(); 
+  //  irrecv.resume(); // Receive the next signal
+  //}  
+}
+
+void clear_leds(){
+  for (int x = 0; x < NUM_LEDS; x++){
+    leds[x] = CRGB::Black; 
+  }
   FastLED.show();
-  
-  if (irrecv.decode(&results)){ //Signal recieved
-    translateIR(); 
-    irrecv.resume(); // Receive the next signal
-  }  
 }
 
 void translateIR() {
   switch(results.value) {
 
     case 0xFF6897: //0
-      bouncing_dot();   
-      Serial.print("0");   
+      bouncing_dot();      
       break;
     case 0xFF30CF: //1
-      fading_comet();
-      Serial.print("1");    
+      fading_rainbow();
       break;
     case 0xFF18E7: //2
-      fading_rainbow();   
-      Serial.print("2");   
+      fill_all(CRGB::Blue);      
       break;
     case 0xFF7A85: //3
-      fill_all(CRGB::Blue);
-      Serial.print("3");     
+      mvrt_pattern();
       break;
     case 0xFF10EF: //4    
-      MVRT_pattern();
-      Serial.print("4");   
+      moving_rainbow();   
       break;
     case 0xFF38C7: //5
-      moving_dot();
-      Serial.print("5");
       break;
     case 0xFF5AA5: //6  
-      moving_rainbow();
-      Serial.print("6");
       break;
     case 0xFF42BD: //7  
-      still_fading_rainbow();
-      Serial.print("7");
       break;
     case 0xFF4AB5: //8    
       break;
