@@ -24,6 +24,9 @@ public class LEDSubsytem extends SubsystemBase {
     led.setLength(buffer.getLength());
     led.setData(buffer);
     led.start();
+    patterns.paintRed();
+    led.setData(buffer);
+    System.out.println("here!");
   }
 
   //Sets color of one square

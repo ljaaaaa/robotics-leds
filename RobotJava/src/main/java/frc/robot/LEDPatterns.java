@@ -10,10 +10,10 @@ public class LEDPatterns {
     int position;
     boolean goingUp;
 
-    public LEDPatterns(AddressableLEDBuffer buffer, AddressableLED led){
-        this.buffer = buffer;
-        this.led = led;
-    }   
+  public LEDPatterns(AddressableLEDBuffer buffer, AddressableLED led){
+    this.buffer = buffer;
+    this.led = led;
+  }   
     
   public void paintRed(){
     for (int x = 0; x < buffer.getLength(); x++){
