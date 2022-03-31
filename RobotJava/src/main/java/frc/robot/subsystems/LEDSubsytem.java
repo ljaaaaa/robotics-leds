@@ -18,15 +18,21 @@ public class LEDSubsytem extends SubsystemBase {
   //Constructor
   public LEDSubsytem() {
     led = new AddressableLED(0);
-    buffer = new AddressableLEDBuffer(10);
+    buffer = new AddressableLEDBuffer(120);
     patterns = new LEDPatterns(buffer, led);
 
     led.setLength(buffer.getLength());
     led.setData(buffer);
     led.start();
-    patterns.paintRed();
-    led.setData(buffer);
-    System.out.println("here!");
+
+    patterns.faded_rainbow();
+    setData();
+
+    try {
+      Thread.sleep(50);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
   }
 
   //Sets color of one square

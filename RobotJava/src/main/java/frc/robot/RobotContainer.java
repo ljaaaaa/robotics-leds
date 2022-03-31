@@ -13,18 +13,13 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 public class RobotContainer {
   
   private final LEDSubsytem subsystem = new LEDSubsytem();
-  private Joystick joystick;
-  private JoystickButton buttonA;
 
   public RobotContainer() {
-    joystick = new Joystick(0);
-    buttonA = new JoystickButton(joystick, 1);
-
     configureButtonBindings();
   }
 
   private void configureButtonBindings() {
-      buttonA.whenPressed(new PatternCommand(subsystem, this::getSolidButton));   
+     
   }
 
   public Command getAutonomousCommand() {
@@ -32,6 +27,6 @@ public class RobotContainer {
   }
 
   public boolean getSolidButton(){
-    return buttonA.get();
+    return false;
   }
 }
