@@ -7,7 +7,7 @@
 #define DATA_PIN 8
 
 //Leds
-#define NUM_LEDS 300
+#define NUM_LEDS 100
 CRGBW leds[NUM_LEDS];
 CRGB *ledsRGB = (CRGB *) &leds[0];
 const uint8_t brightness = 128;

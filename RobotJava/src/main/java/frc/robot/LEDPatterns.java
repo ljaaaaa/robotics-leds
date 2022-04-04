@@ -47,38 +47,37 @@ public class LEDPatterns {
       b -= 255/num_segments;
       paintLED(r, g, b);
     }
-  
-  //Red to yellow
-  for (int x = 0; x < num_segments; x++){
-    g += 255/num_segments;
-    paintLED(r, g, b);
-  }
+    
+    //Red to yellow
+    for (int x = 0; x < num_segments; x++){
+      g += 255/num_segments;
+      paintLED(r, g, b);
+    }
 
-  //Yellow to green
-  for (int x = 0; x < num_segments; x++){
-    r -= 255/num_segments;
-    paintLED(r, g, b);
-  }
+    //Yellow to green
+    for (int x = 0; x < num_segments; x++){
+      r -= 255/num_segments;
+      paintLED(r, g, b);
+    }
 
-  //Green to light blue
-  for (int x = 0; x < num_segments; x++){
-    b += 255/num_segments;
-    paintLED(r, g, b);
-  }
+    //Green to light blue
+    for (int x = 0; x < num_segments; x++){
+      b += 255/num_segments;
+      paintLED(r, g, b);
+    }
 
-  //Light green to blue
-  for (int x = 0; x < num_segments; x++){
-    g -= 255/num_segments;
-    paintLED(r, g, b);
-  }
+    //Light green to blue
+    for (int x = 0; x < num_segments; x++){
+      g -= 255/num_segments;
+      paintLED(r, g, b);
+    }
 
-  //Blue to pink
-  for (int x = 0; x < num_segments; x++){
-    r += 255/num_segments;
-    paintLED(r, g, b);
-  }
-  pos = 0;
-
+    //Blue to pink
+    for (int x = 0; x < num_segments; x++){
+      r += 255/num_segments;
+      paintLED(r, g, b);
+    }
+    pos = 0;
   }
 
   public void paintLED(int r, int g, int b){
