@@ -1,8 +1,13 @@
 void moving_gradient(){
-  CRGB gradient[NUM_LEDS-1];
+  CRGB gradient[NUM_LEDS];
   for (int x = 0; x < NUM_LEDS; x++){
-    //gradient[x] = leds[x];
+    gradient[x].r = leds[x].r;
+    gradient[x].g = leds[x].g;
+    gradient[x].b = leds[x].b;
   }
 
-  //move gradient using move_array()
+  for (int x = 0; x < NUM_LEDS; x++){
+    move_array(gradient, NUM_LEDS);
+    delay(50);
+  }
 }
