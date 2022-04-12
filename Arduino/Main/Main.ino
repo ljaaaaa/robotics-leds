@@ -5,7 +5,7 @@
 #define DATA_PIN 8
 
 //Leds
-#define NUM_LEDS 110
+#define NUM_LEDS 20
 CRGBW leds[NUM_LEDS];
 CRGB *ledsRGB = (CRGB *) &leds[0];
 const uint8_t brightness = 128;
@@ -16,8 +16,8 @@ void setup(){
   FastLED.addLeds<WS2812B, DATA_PIN, RGB>(ledsRGB, getRGBWsize(NUM_LEDS)); //Init LEDs
   FastLED.setBrightness(brightness);
 
-  //clear_leds();
-  gradient(CRGB::Yellow, CRGB::Purple);
+  clear_leds();
+  //gradient(CRGB::Yellow, CRGB::Purple);
   FastLED.show();
 }
 
