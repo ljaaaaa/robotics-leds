@@ -26,11 +26,12 @@ public class LEDSubsytem extends SubsystemBase {
     led.start();
 
     patterns.faded_rainbow();
+    //patterns.MVRTPattern();
     setData();
 
     try {
-      Thread.sleep(50);
-    } catch (InterruptedException e) {
+      Thread.sleep(100);
+    } catch (Exception e) {
       e.printStackTrace();
     }
   }

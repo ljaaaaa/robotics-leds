@@ -5,8 +5,8 @@
 #define DATA_PIN 8
 
 //Leds
-#define NUM_LEDS 110
-CRGBW leds[NUM_LEDS];
+#define NUM_LEDS 20
+CRGB leds[NUM_LEDS];
 CRGB *ledsRGB = (CRGB *) &leds[0];
 const uint8_t brightness = 128;
 
@@ -14,15 +14,19 @@ void setup(){
   Serial.begin(9600);
 
   FastLED.addLeds<WS2812B, DATA_PIN, RGB>(ledsRGB, getRGBWsize(NUM_LEDS)); //Init LEDs
+//  FastLED.addLeds<NEOPIXEL, DATA_PIN>(leds, NUM_LEDS);
   FastLED.setBrightness(brightness);
 
   //clear_leds();
-  gradient(CRGB::Yellow, CRGB::Purple);
-  FastLED.show();
+  gradient(CRGB::Purple, CRGB::Yellow);
+  //double_gradient(CRGB::Purple, CRGB::Yellow);
+  //gradient(CRGB::Purple, CRGB::Yellow);
+  //fill_all(CRGB::Red);
 }
 
 void loop(){
-
+  //moving_gradient();
+  //FastLED.show();
 }
 
 void clear_leds(){
