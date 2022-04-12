@@ -1,7 +1,23 @@
+CRGB* gradient(int _length, CRGB color1, CRGB color2){
+  int changeInRed = (color2.r - color1.r)/_length;
+  int changeInGreen = (color2.g - color1.g)/_length;
+  int changeInBlue = (color2.b - color1.b)/_length;
+
+  CRGB _array[_length];
+
+  for (int x = 0; x < _length; x++){
+     _array[x].r = color1.r + changeInRed*x;
+     _array[x].g = color1.g + changeInGreen*x;
+     _array[x].b = color1.b + changeInBlue*x;
+  }
+
+  return _array;
+}
+
 void gradient(CRGB color1, CRGB color2){
-  int changeInRed = (color2.r - color1.r)/(NUM_LEDS-1);
-  int changeInGreen = (color2.g - color1.g)/(NUM_LEDS-1);
-  int changeInBlue = (color2.b - color1.b)/(NUM_LEDS-1);
+  int changeInRed = (color2.r - color1.r)/NUM_LEDS;
+  int changeInGreen = (color2.g - color1.g)/NUM_LEDS;
+  int changeInBlue = (color2.b - color1.b)/NUM_LEDS;
 
   for (int x = 0; x < NUM_LEDS; x++){
      leds[x].r = color1.r + changeInRed*x;
@@ -11,6 +27,7 @@ void gradient(CRGB color1, CRGB color2){
   FastLED.show();
 }
 
+<<<<<<< HEAD
 CRGB* gradient(int _length, CRGB color1, CRGB color2){
   int changeInRed = (color2.r - color1.r)/_length;
   int changeInGreen = (color2.g - color1.g)/_length;
@@ -28,6 +45,8 @@ CRGB* gradient(int _length, CRGB color1, CRGB color2){
 }
 
 
+=======
+>>>>>>> f9f0ecb875028b202a395295424977d7d91088e1
 void double_gradient(CRGB color1, CRGB color2){
   CRGB array1[NUM_LEDS/2] = gradient(NUM_LEDS/2, color1, color2);
   CRGB array2[NUM_LEDS/2] = gradient(NUM_LEDS/2, color2, color1);
