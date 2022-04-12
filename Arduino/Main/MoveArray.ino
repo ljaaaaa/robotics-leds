@@ -1,10 +1,8 @@
 void move_array(CRGB _array[], int arr_size){
-  CRGB old_array[arr_size];
+  CRGB old_array[arr_size];// = _array;
 
   for (int x = 0; x < arr_size; x++){
-    old_array[x].r = _array[x].r;
-    old_array[x].g = _array[x].g;
-    old_array[x].b = _array[x].b;
+    old_array[x] = _array[x];
   }
   
   for (int x = 0; x < arr_size; x++){
@@ -12,7 +10,20 @@ void move_array(CRGB _array[], int arr_size){
       _array[x] = old_array[0];
       
     } else {
-      _array[x] = old_array[x+1]; 
+      _array[x] = old_array[x+1];
+    }
+  }
+}
+
+void move_leds(){
+  CRGBW old_array[NUM_LEDS] = leds;
+  
+  for (int x = 0; x < NUM_LEDS; x++){
+    if (x == NUM_LEDS-1){
+      leds[x] = old_array[0];
+      
+    } else {
+      leds[x] = old_array[x+1];
     }
   }
 }

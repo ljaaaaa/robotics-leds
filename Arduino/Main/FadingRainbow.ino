@@ -52,6 +52,7 @@ void paintLED(int r, int g, int b){
   leds[pos].r = r;
   leds[pos].g = g;
   leds[pos].b = b;
+  leds[pos].w = 0;
   pos++;
   FastLED.show();
 }

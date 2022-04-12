@@ -4,7 +4,6 @@ void moving_rainbow(){
   move_array(colors, 6);
   for (int x = 0; x < NUM_LEDS; x++){
     leds[x] = colors[x%6];
-    delay(1);
   }
 
   FastLED.show(); 
