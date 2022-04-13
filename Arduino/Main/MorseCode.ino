@@ -3,26 +3,20 @@ CRGB MyPurple = CRGB(0x7500ff);
 
 int ARR_LEN = 30;
 CRGB morse_colors[] {
-  //M
-  MyPurple, MyPurple, CRGB::Black, MyPurple, MyPurple,
+  /*M*/MyPurple, MyPurple, CRGB::Black, MyPurple, MyPurple,
+
+  /*Space */CRGB::Black, CRGB::Black, CRGB::Black,
+
+  /*V*/MyPurple, CRGB::Black, MyPurple, CRGB::Black, MyPurple, CRGB::Black, MyPurple, MyPurple,
+
+  /*Space*/ CRGB::Black, CRGB::Black, CRGB::Black,
+
+  /*R*/MyPurple, CRGB::Black, MyPurple, MyPurple, CRGB::Black, MyPurple,
 
   //Space
-  CRGB::Black, CRGB::Black, CRGB::Black,
+  /*Space*/CRGB::Black, CRGB::Black, CRGB::Black,
 
-  //V
-  MyPurple, CRGB::Black, MyPurple, CRGB::Black, MyPurple, CRGB::Black, MyPurple, MyPurple,
-
-  //Space
-  CRGB::Black, CRGB::Black, CRGB::Black,
-
-  //R
-  MyPurple, CRGB::Black, MyPurple, MyPurple, CRGB::Black, MyPurple,
-
-  //Space
-  CRGB::Black, CRGB::Black, CRGB::Black,
-
-  //T
-  MyPurple, MyPurple
+  /*T*/MyPurple, MyPurple
 };
 
 //Spell MVRT in morse code
