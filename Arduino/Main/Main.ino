@@ -17,8 +17,8 @@ void setup(){
   FastLED.setBrightness(brightness);
 
   //gradient(CRGB::Yellow, CRGB::Purple);
-  gradient2(0, 40, CRGB::Yellow, CRGB::Purple);
-  gradient2(40, 80, CRGB::Purple, CRGB::Yellow);
+  gradient2(0, NUM_LEDS/2, CRGB::Yellow, CRGB::Purple);
+  gradient2(NUM_LEDS/2, NUM_LEDS, CRGB::Purple, CRGB::Yellow);
   FastLED.show();
 }
 
@@ -33,19 +33,4 @@ void clear_leds(){
     leds[x] = CRGB::Black; 
   }
   FastLED.show();
-}
-
-void all(){
-   morse_code();
-  delay(1000);
-  bouncing_dot();
-  delay(1000);
-  fading_rainbow();
-  delay(1000);
-  fill_all(CRGB::Green);
-  delay(1000);
-  mvrt_pattern();
-  delay(1000);
-  moving_rainbow();
-  delay(1000);
 }

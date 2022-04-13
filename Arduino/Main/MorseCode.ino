@@ -21,7 +21,7 @@ CRGB morse_colors[] {
 
 //Spell MVRT in morse code
 void morse_code(){
-  for (int x = 0; x < NUM_LEDS; x++){
+  for (int x = 0; x < ARR_LEN; x++){
     leds[x] = morse_colors[x];
   }
     

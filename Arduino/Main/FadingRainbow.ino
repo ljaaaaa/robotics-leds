@@ -1,58 +1,10 @@
-int pos = 0;
-
-void fading_rainbow() {
-  int num_colors = 6; //red, orange, yellow, green, blue, purple
-  int num_segments = NUM_LEDS/num_colors; //segments of each color
-  
-  int r = 255;
-  int g = 0;
-  int b = 255;
-
-  //Pink to purple
-  for (int x = 0; x < num_segments; x++){
-    b -= 255/num_segments;
-    paintLED(r, g, b);
-  }
-  
-  //Red to yellow
-  for (int x = 0; x < num_segments; x++){
-    g += 255/num_segments;
-    paintLED(r, g, b);
-  }
-
-  //Yellow to green
-  for (int x = 0; x < num_segments; x++){
-    r -= 255/num_segments;
-    paintLED(r, g, b);
-  }
-
-  //Green to light blue
-  for (int x = 0; x < num_segments; x++){
-    b += 255/num_segments;
-    paintLED(r, g, b);
-  }
-
-  //Light green to blue
-  for (int x = 0; x < num_segments; x++){
-    g -= 255/num_segments;
-    paintLED(r, g, b);
-  }
-
-  //Blue to pink
-  for (int x = 0; x < num_segments; x++){
-    r += 255/num_segments;
-    paintLED(r, g, b);
-  }
-  pos = 0;
-
-  FastLED.show();
-}
-
-void paintLED(int r, int g, int b){
-  leds[pos].r = r;
-  leds[pos].g = g;
-  leds[pos].b = b;
-  leds[pos].w = 0;
-  pos++;
-  FastLED.show();
+void fading_rainbow(){
+  int x = NUM_LEDS/7; //For each section of color
+  gradient2(0, x, CRGB::Red, CRGB::Orange);
+  gradient2(x, x*2, CRGB::Orange, CRGB::Yellow);
+  gradient2(x*2, x*3, CRGB::Yellow, CRGB::Green);
+  gradient2(x*3, x*4, CRGB::Green, CRGB::Blue);
+  gradient2(x*4, x*5, CRGB::Blue, CRGB::Purple);
+  gradient2(x*5, x*6, CRGB::Purple, CRGB::Pink);
+  gradient2(x*6, x*7, CRGB::Pink, CRGB::Red);
 }
