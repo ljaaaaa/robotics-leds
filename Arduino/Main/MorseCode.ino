@@ -24,6 +24,4 @@ void morse_code(){
   for (int x = 0; x < ARR_LEN; x++){
     leds[x] = morse_colors[x];
   }
-    
-  FastLED.show();
 }

@@ -32,5 +32,4 @@ void clear_leds(){
   for (int x = 0; x < NUM_LEDS; x++){
     leds[x] = CRGB::Black; 
   }
-  FastLED.show();
 }

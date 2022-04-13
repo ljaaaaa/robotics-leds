@@ -8,7 +8,6 @@ void gradient(CRGB color1, CRGB color2){
      leds[x].g = color1.g + changeInGreen*x;
      leds[x].b = color1.b + changeInBlue*x;
   }
-  FastLED.show();
 }
 
 void gradient2(int startPos, int endPos, CRGB color1, CRGB color2){
@@ -23,5 +22,4 @@ void gradient2(int startPos, int endPos, CRGB color1, CRGB color2){
      leds[startPos+x].g = color1.g + changeInGreen*x;
      leds[startPos+x].b = color1.b + changeInBlue*x;
   }
-  FastLED.show();
 }
