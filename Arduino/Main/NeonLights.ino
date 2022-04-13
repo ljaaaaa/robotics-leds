@@ -4,7 +4,7 @@ CRGB yellow = CRGB(0xf3ff00);
 CRGB pink = CRGB(0xff008f);
 CRGB purple = CRGB(0xff00f3);
 
-CRGB[] neon_colors {red, orange, yellow, pink, purple};
+CRGB neon_colors[5] {red, pink, orange, yellow, purple};
 
 void neon_gradient(){
   int x = NUM_LEDS/5; //For each section of color
