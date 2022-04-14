@@ -1,5 +1,7 @@
 package frc.robot;
 
+import java.util.Arrays;
+
 import edu.wpi.first.wpilibj.AddressableLED;
 import edu.wpi.first.wpilibj.AddressableLEDBuffer;
 import edu.wpi.first.wpilibj.Timer;
@@ -27,11 +29,12 @@ public class LEDPatterns {
     }
   }
 
-
-  
   //Move current buffer
-  void move_leds(){
+  public void move_leds(){
     MyColor old_array[] = new MyColor[buffer.getLength()];
+
+    System.out.println("heyyyyyy----------");
+    //System.out.println(Arrays.asList(old_array));
 
     for (int x = 0; x < buffer.getLength(); x++){
       old_array[x] = new MyColor((int)buffer.getLED(x).red, (int)buffer.getLED(x).green, (int)buffer.getLED(x).blue);

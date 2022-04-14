@@ -18,6 +18,7 @@ public class LEDSubsytem extends SubsystemBase {
 
   //Constructor
   public LEDSubsytem() {
+    System.out.println("constructor running");
     led = new AddressableLED(0);
     buffer = new AddressableLEDBuffer(120);
     patterns = new LEDPatterns(buffer, led);
@@ -26,9 +27,9 @@ public class LEDSubsytem extends SubsystemBase {
     led.setData(buffer);
     led.start();
 
-    patterns.gradient(0, buffer.getLength(), Constants.purple, Constants.yellow);
-
-    Timer.delay(100);
+    patterns.gradient(0, buffer.getLength()/2, Constants.purple, Constants.yellow);
+    patterns.gradient(buffer.getLength()/2, buffer.getLength(), Constants.yellow, Constants.purple);
+    patterns.setData();
   }
 
   public void stop(){
@@ -37,6 +38,8 @@ public class LEDSubsytem extends SubsystemBase {
 
   @Override
   public void periodic() {
-    
+    patterns.move_leds();
+    patterns.setData();
+    Timer.delay(0.05);
   }
 }

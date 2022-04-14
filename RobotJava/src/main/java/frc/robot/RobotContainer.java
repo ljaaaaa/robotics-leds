@@ -4,10 +4,13 @@
 
 package frc.robot;
 
+import frc.robot.subsystems.LEDSubsytem;
 import edu.wpi.first.wpilibj2.command.Command;
 
 public class RobotContainer {
   
+  private final LEDSubsytem subsystem = new LEDSubsytem();
+
   public RobotContainer() {
     configureButtonBindings();
   }
