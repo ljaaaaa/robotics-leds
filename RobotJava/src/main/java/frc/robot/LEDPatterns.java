@@ -33,12 +33,11 @@ public class LEDPatterns {
   public void move_leds(){
     MyColor old_array[] = new MyColor[buffer.getLength()];
 
-    System.out.println("heyyyyyy----------");
-    //System.out.println(Arrays.asList(old_array));
-
     for (int x = 0; x < buffer.getLength(); x++){
       old_array[x] = new MyColor((int)buffer.getLED(x).red, (int)buffer.getLED(x).green, (int)buffer.getLED(x).blue);
     }
+
+    System.out.println(Arrays.asList(old_array));
 
     for (int x = 0; x < buffer.getLength(); x++){
       if (x == buffer.getLength()-1){

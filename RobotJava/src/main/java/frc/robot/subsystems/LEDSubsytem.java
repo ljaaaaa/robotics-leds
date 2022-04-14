@@ -30,6 +30,8 @@ public class LEDSubsytem extends SubsystemBase {
     patterns.gradient(0, buffer.getLength()/2, Constants.purple, Constants.yellow);
     patterns.gradient(buffer.getLength()/2, buffer.getLength(), Constants.yellow, Constants.purple);
     patterns.setData();
+
+    Timer.delay(1);
   }
 
   public void stop(){
@@ -39,7 +41,6 @@ public class LEDSubsytem extends SubsystemBase {
   @Override
   public void periodic() {
     patterns.move_leds();
-    patterns.setData();
-    Timer.delay(0.05);
+    Timer.delay(0.3);
   }
 }
