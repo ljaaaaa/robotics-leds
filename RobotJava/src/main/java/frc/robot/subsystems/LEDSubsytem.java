@@ -5,9 +5,10 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.AddressableLED;
 import edu.wpi.first.wpilibj.AddressableLEDBuffer;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 import frc.robot.LEDPatterns;
-import frc.robot.MyColor;
 
 public class LEDSubsytem extends SubsystemBase {
   AddressableLEDBuffer buffer;
@@ -25,26 +26,9 @@ public class LEDSubsytem extends SubsystemBase {
     led.setData(buffer);
     led.start();
 
-    patterns.faded_rainbow();
-    //patterns.MVRTPattern();
-    setData();
+    patterns.gradient(0, buffer.getLength(), Constants.purple, Constants.yellow);
 
-    try {
-      Thread.sleep(100);
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-  }
-
-  //Sets color of one square
-  public void setColor(int index, MyColor color){
-    buffer.setRGB(index, color.red, color.green, color.blue);
-    setData();
-  }
-
-  //Update led data from buffer
-  public void setData(){
-    led.setData(buffer);
+    Timer.delay(100);
   }
 
   public void stop(){

@@ -13,7 +13,6 @@ CRGB morse_colors[] {
 
   /*R*/MyPurple, CRGB::Black, MyPurple, MyPurple, CRGB::Black, MyPurple,
 
-  //Space
   /*Space*/CRGB::Black, CRGB::Black, CRGB::Black,
 
   /*T*/MyPurple, MyPurple

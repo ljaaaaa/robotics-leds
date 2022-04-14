@@ -5,13 +5,13 @@
 package frc.robot;
 
 public class MyColor {
-    public int red;
-    public int green;
-    public int blue;
+    public int r;
+    public int g;
+    public int b;
 
-    public MyColor(int red, int green, int blue){
-        this.red = red;
-        this.green = green;
-        this.blue = blue;
+    public MyColor(int r, int g, int b){
+        this.r = r;
+        this.g = g;
+        this.b = b;
     }
 }

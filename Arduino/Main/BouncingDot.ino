@@ -7,6 +7,7 @@ void bouncing_dot() {
       if (0 <= p && p < NUM_LEDS)
         leds[p] = CRGBW{0, 0, 0, 0};
       FastLED.show();
+      delay(30);
     }
   }
 }
