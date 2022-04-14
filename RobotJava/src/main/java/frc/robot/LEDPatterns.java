@@ -1,7 +1,5 @@
 package frc.robot;
 
-import java.util.Arrays;
-
 import edu.wpi.first.wpilibj.AddressableLED;
 import edu.wpi.first.wpilibj.AddressableLEDBuffer;
 import edu.wpi.first.wpilibj.Timer;
@@ -9,10 +7,12 @@ import edu.wpi.first.wpilibj.Timer;
 public class LEDPatterns {
     AddressableLEDBuffer buffer;
     AddressableLED led;
+    MyColor[] led_array;
 
   public LEDPatterns(AddressableLEDBuffer buffer, AddressableLED led){
     this.buffer = buffer;
     this.led = led;
+    led_array = new MyColor[buffer.getLength()];
   }  
 
   //Create gradient from one color to another
@@ -25,19 +25,19 @@ public class LEDPatterns {
     int changeB = (color2.b - color1.b)/(len-1);
   
     for (int x = 0; startPos+x < endPos; x++){
+        led_array[startPos+x] = new MyColor(color1.r + changeR*x, color1.g + changeG*x, color1.b + changeB*x);
         setColor(startPos+x, new MyColor(color1.r + changeR*x, color1.g + changeG*x, color1.b + changeB*x));
     }
+    setData();
   }
 
   //Move current buffer
   public void move_leds(){
-    MyColor old_array[] = new MyColor[buffer.getLength()];
+    MyColor old_array[] = new MyColor[led_array.length];
 
-    for (int x = 0; x < buffer.getLength(); x++){
-      old_array[x] = new MyColor((int)buffer.getLED(x).red, (int)buffer.getLED(x).green, (int)buffer.getLED(x).blue);
+    for (int x = 0; x < old_array.length; x++){
+      old_array[x] = new MyColor(led_array[x].r, led_array[x].g, led_array[x].b);
     }
-
-    System.out.println(Arrays.asList(old_array));
 
     for (int x = 0; x < buffer.getLength(); x++){
       if (x == buffer.getLength()-1){
@@ -47,6 +47,8 @@ public class LEDPatterns {
         setColor(x, old_array[x+1]);
       }
     }
+
+    setData();
   }
 
   //MVRT in morse code
@@ -118,8 +120,8 @@ public class LEDPatterns {
 
   //Sets color of one square
   public void setColor(int index, MyColor color){
+    led_array[index] = color;
     buffer.setRGB(index, color.r, color.g, color.b);
-    setData();
   }
 
   //Set the data for leds

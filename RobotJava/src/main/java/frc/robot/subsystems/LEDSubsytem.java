@@ -18,7 +18,6 @@ public class LEDSubsytem extends SubsystemBase {
 
   //Constructor
   public LEDSubsytem() {
-    System.out.println("constructor running");
     led = new AddressableLED(0);
     buffer = new AddressableLEDBuffer(120);
     patterns = new LEDPatterns(buffer, led);
@@ -32,6 +31,10 @@ public class LEDSubsytem extends SubsystemBase {
     patterns.setData();
 
     Timer.delay(1);
+
+    patterns.move_leds();
+    patterns.setData();
+    Timer.delay(1);
   }
 
   public void stop(){
@@ -41,6 +44,8 @@ public class LEDSubsytem extends SubsystemBase {
   @Override
   public void periodic() {
     patterns.move_leds();
-    Timer.delay(0.3);
+    patterns.setData();
+    Timer.delay(0.02);
+    //System.out.println("here");
   }
 }
