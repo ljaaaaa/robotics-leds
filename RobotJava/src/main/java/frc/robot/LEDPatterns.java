@@ -97,15 +97,35 @@ public class LEDPatterns {
     gradient(x*5, x*6, Constants.purple, Constants.red);
   }
 
+  public void mv_gradient(){
+    gradient(0, buffer.getLength()/2, Constants.purple, Constants.yellow);
+    gradient(buffer.getLength()/2, buffer.getLength(), Constants.yellow, Constants.purple);
+  }
+
+  public void neon_gradient(){
+    MyColor red = new MyColor(255, 0, 0);
+    MyColor orange = new MyColor(255, 134, 0);
+    MyColor yellow = new MyColor(243, 255, 0);
+    MyColor pink = new MyColor(255, 0, 143);
+    MyColor purple = new MyColor(255, 0, 243);
+
+    int x = buffer.getLength()/5; //For each section of color
+    gradient(0, x, red, orange);
+    gradient(x, x*2, orange, yellow);
+    gradient(x*2, x*3, yellow, pink);
+    gradient(x*3, x*4, pink, purple);
+    gradient(x*4, x*5, purple, red);
+  }
+
   //Clap pattern
   public void clap(){
     System.out.println("clapping");
-    //flash(Constants.yellow, .24);
-    //flash(Constants.yellow, .24);
+    flash(Constants.yellow, .22);
+    flash(Constants.yellow, .22);
   
-    //flash(Constants.yellow, .1);
-    //flash(Constants.yellow, .1);
-    //flash(Constants.yellow, .1);
+    flash(Constants.yellow, .13);
+    flash(Constants.yellow, .13);
+    flash(Constants.yellow, .13);
   }
 
   //Flash a color for certain time
@@ -119,6 +139,7 @@ public class LEDPatterns {
     Timer.delay(time);
   }
 
+  //Fill entire LED strip to one color
   public void fill_all(MyColor color){
     for(int x = 0; x < buffer.getLength(); x++){
       setColor(x, color);
