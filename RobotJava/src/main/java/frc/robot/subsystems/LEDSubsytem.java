@@ -44,5 +44,6 @@ public class LEDSubsytem extends SubsystemBase {
     //patterns.move_leds();
     //patterns.setData();
     Timer.delay(1);
+    System.out.println("delaying");
   }
 }

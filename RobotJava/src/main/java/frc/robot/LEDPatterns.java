@@ -99,23 +99,24 @@ public class LEDPatterns {
 
   //Clap pattern
   public void clap(){
-    flash(Constants.yellow, 240);
-    flash(Constants.yellow, 240);
+    System.out.println("clapping");
+    //flash(Constants.yellow, .24);
+    //flash(Constants.yellow, .24);
   
-    flash(Constants.yellow, 100);
-    flash(Constants.yellow, 100);
-    flash(Constants.yellow, 100);
+    //flash(Constants.yellow, .1);
+    //flash(Constants.yellow, .1);
+    //flash(Constants.yellow, .1);
   }
 
   //Flash a color for certain time
-  public void flash(MyColor color, int time){
+  public void flash(MyColor color, double time){
     fill_all(color);
-    Timer.delay(time);
     setData();
+    Timer.delay(time);
   
     fill_all(Constants.black);
-    Timer.delay(time);
     setData();
+    Timer.delay(time);
   }
 
   public void fill_all(MyColor color){
