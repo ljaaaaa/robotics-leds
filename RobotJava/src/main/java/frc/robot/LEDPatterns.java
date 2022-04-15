@@ -19,6 +19,18 @@ public class LEDPatterns {
     }
   }  
 
+  //A dot that moves from one side of LED strip to other, accelerating as it continues
+  public void accelerating_dot(){
+    double delay_time = 0.5;
+
+    for (int x = 0; x < buffer.getLength(); x++){
+      fill_all(Constants.black);
+      setColor(x, Constants.white);
+      Timer.delay(delay_time);
+      delay_time /= 2;
+    }
+  }
+
   //Create gradient from one color to another
   public void gradient(int startPos, int endPos, MyColor color1, MyColor color2){
     int len = endPos-startPos;
@@ -51,7 +63,6 @@ public class LEDPatterns {
         setColor(x, old_array[x+1]);
       }
     }
-
     setData();
   }
 
@@ -73,7 +84,6 @@ public class LEDPatterns {
       setColor(x, morse_colors[x]);
     }
   }
-
 
   //MVRT checkered pattern
   public void mvrt_pattern(){

@@ -7,7 +7,6 @@ import edu.wpi.first.wpilibj.AddressableLED;
 import edu.wpi.first.wpilibj.AddressableLEDBuffer;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants;
 import frc.robot.LEDPatterns;
 
 public class LEDSubsytem extends SubsystemBase {
@@ -26,7 +25,8 @@ public class LEDSubsytem extends SubsystemBase {
     led.setData(buffer);
     led.start();
 
-    patterns.neon_gradient();
+    //patterns.neon_gradient();
+    patterns.accelerating_dot();
   }
 
   public void stop(){
