@@ -7,7 +7,6 @@ import edu.wpi.first.wpilibj.AddressableLED;
 import edu.wpi.first.wpilibj.AddressableLEDBuffer;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants;
 import frc.robot.LEDPatterns;
 
 public class LEDSubsytem extends SubsystemBase {
@@ -26,14 +25,11 @@ public class LEDSubsytem extends SubsystemBase {
     led.setData(buffer);
     led.start();
 
-    patterns.gradient(0, buffer.getLength()/2, Constants.purple, Constants.yellow);
-    patterns.gradient(buffer.getLength()/2, buffer.getLength(), Constants.yellow, Constants.purple);
-    patterns.setData();
+    //patterns.gradient(0, buffer.getLength()/2, Constants.purple, Constants.yellow);
+    //patterns.gradient(buffer.getLength()/2, buffer.getLength(), Constants.yellow, Constants.purple);
+    //patterns.mvrt_pattern();
+    //patterns.morse_code();
 
-    Timer.delay(1);
-
-    patterns.move_leds();
-    patterns.setData();
     Timer.delay(1);
   }
 
@@ -43,9 +39,10 @@ public class LEDSubsytem extends SubsystemBase {
 
   @Override
   public void periodic() {
-    patterns.move_leds();
+    patterns.clap();
     patterns.setData();
-    Timer.delay(0.02);
-    //System.out.println("here");
+    //patterns.move_leds();
+    //patterns.setData();
+    Timer.delay(1);
   }
 }

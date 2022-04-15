@@ -13,6 +13,10 @@ public class LEDPatterns {
     this.buffer = buffer;
     this.led = led;
     led_array = new MyColor[buffer.getLength()];
+
+    for (int x = 0; x < led_array.length; x++){
+      led_array[x] = Constants.black;
+    }
   }  
 
   //Create gradient from one color to another
@@ -107,9 +111,11 @@ public class LEDPatterns {
   public void flash(MyColor color, int time){
     fill_all(color);
     Timer.delay(time);
+    setData();
   
     fill_all(Constants.black);
     Timer.delay(time);
+    setData();
   }
 
   public void fill_all(MyColor color){
