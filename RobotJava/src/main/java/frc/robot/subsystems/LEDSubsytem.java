@@ -24,9 +24,6 @@ public class LEDSubsytem extends SubsystemBase {
     led.setLength(buffer.getLength());
     led.setData(buffer);
     led.start();
-
-    //patterns.neon_gradient();
-    patterns.accelerating_dot();
   }
 
   public void stop(){
@@ -35,7 +32,7 @@ public class LEDSubsytem extends SubsystemBase {
 
   @Override
   public void periodic() {
-    patterns.move_leds();
+    patterns.accelerating_dot();
     patterns.setData();
     Timer.delay(0.02);
   }

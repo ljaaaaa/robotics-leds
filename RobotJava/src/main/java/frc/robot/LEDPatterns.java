@@ -26,8 +26,12 @@ public class LEDPatterns {
     for (int x = 0; x < buffer.getLength(); x++){
       fill_all(Constants.black);
       setColor(x, Constants.white);
+      setData();
       Timer.delay(delay_time);
-      delay_time /= 2;
+      
+      if (x%3 == 0){
+        delay_time /= 1.3;
+      }
     }
   }
 
