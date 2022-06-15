@@ -1,5 +1,5 @@
 void move_leds(){
-  CRGBW old_array[NUM_LEDS] = leds;
+  CRGB old_array[NUM_LEDS] = leds;
   
   for (int x = 0; x < NUM_LEDS; x++){
     if (x == NUM_LEDS-1){
