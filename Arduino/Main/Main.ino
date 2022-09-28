@@ -15,12 +15,14 @@ void setup(){
   FastLED.setBrightness(brightness);
 
   fading_rainbow();
+  //mvrt_pattern();
+  //clap();
 
   FastLED.show();
 }
 
 void loop(){
   move_leds();
-  delay(100);
+  delay(50);
   FastLED.show();
 }
